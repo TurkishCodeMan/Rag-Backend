@@ -1,0 +1,15 @@
+__pycache__
+*.pyc
+.env
+.env.local
+.venv
+venv
+.git
+.gitignore
+*.pdf
+test_*
+README.md
+.pytest_cache/
+.coverage
+htmlcov/
+.DS_Store

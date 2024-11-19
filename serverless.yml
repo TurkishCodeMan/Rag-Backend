@@ -1,0 +1,41 @@
+service: rag-app-api
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: eu-central-1
+  memorySize: 2048
+  timeout: 30
+
+functions:
+  api:
+    handler: main.handler
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+    environment:
+      HF_TOKEN: ${env:HF_TOKEN}
+
+package:
+  patterns:
+    - '!**/*.pyc'
+    - '!.venv/**'
+    - '!.git/**'
+    - '!__pycache__/**'
+    - '!.pytest_cache/**'
+    - '!tests/**'
+    - '!.env'
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    layer:
+      name: python-deps
+      description: Python dependencies for RAG application
+    noDeploy:
+      - pytest
+      - pytest-cov
+    dockerizePip: true
