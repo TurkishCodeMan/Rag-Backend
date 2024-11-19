@@ -5,4 +5,4 @@ chromadb==0.4.24
 pypdf2==3.0.1
 python-dotenv==1.0.1
 langchain-huggingface==0.1.2
-
+langchain-community==0.3.7
