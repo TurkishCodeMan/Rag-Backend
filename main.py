@@ -13,7 +13,6 @@ from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
 import io
 from PyPDF2 import PdfReader
-from mangum import Mangum
 
 # Çevresel değişkenleri yükle
 load_dotenv()
@@ -21,10 +20,10 @@ load_dotenv()
 # FastAPI uygulamasını başlat
 app = FastAPI(title="RAG API", description="Retrieval Augmented Generation API")
 
-# CORS ayarlarını ekleyelim
+# CORS ayarları
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Tüm originlere izin ver (production'da daha spesifik olmalı)
+    allow_origins=["*"],  # Production için frontend URL'inizi buraya ekleyin
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -158,9 +157,6 @@ async def query(request: QueryRequest):
         }
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
-
-# AWS Lambda handler
-handler = Mangum(app)
 
 if __name__ == "__main__":
     import uvicorn
