@@ -21,10 +21,10 @@ load_dotenv()
 # FastAPI uygulamasını başlat
 app = FastAPI(title="RAG API", description="Retrieval Augmented Generation API")
 
-# CORS ayarları
+# CORS ayarlarını ekleyelim
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Production için frontend URL'inizi buraya ekleyin
+    allow_origins=["*"],  # Tüm originlere izin ver (production'da daha spesifik olmalı)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
