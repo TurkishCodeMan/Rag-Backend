@@ -9,4 +9,4 @@ pypdf2==3.0.1
 python-dotenv==1.0.1
 wikipedia-api==0.6.0
 huggingface-hub==0.21.4
-langchain-huggingface==0.1.10
+langchain-huggingface==0.1.2
