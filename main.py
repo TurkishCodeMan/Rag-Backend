@@ -16,7 +16,7 @@ from PyPDF2 import PdfReader
 
 # Çevresel değişkenleri yükle
 load_dotenv()
-
+HF_TOKEN='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'
 # FastAPI uygulamasını başlat
 app = FastAPI(title="RAG API", description="Retrieval Augmented Generation API")
 
@@ -34,7 +34,7 @@ class RAGSystem:
         # LLM modelini başlat
         self.llm = HuggingFaceEndpoint(
             repo_id="mistralai/Mixtral-8x7B-Instruct-v0.1",
-            huggingfacehub_api_token=os.getenv("HF_TOKEN"),
+            huggingfacehub_api_token=HF_TOKEN,
             task="text-generation",
             temperature=0.7,
             max_length=512
