@@ -121,6 +121,11 @@ def extract_text_from_pdf(pdf_file_content: bytes) -> str:
         text += page.extract_text()
     return text
 
+@app.get('/test')
+def test():
+    """Test endpoint"""
+    return {"message": "Test successful"}
+
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     """Dosya yükle ve işle"""
